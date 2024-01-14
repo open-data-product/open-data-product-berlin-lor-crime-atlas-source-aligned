@@ -1,15 +1,15 @@
-[![Issues](https://img.shields.io/github/issues/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas)](https://github.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas/issues)
+[![Issues](https://img.shields.io/github/issues/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned)](https://github.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/issues)
 
 <br />
 <p align="center">
-  <a href="https://github.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas">
+  <a href="https://github.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned">
     <img src="logo_with_text.png" alt="Logo" height="80">
   </a>
 
-  <h1 align="center">Open Lifeworlds Data Product - Berlin LOR crime atlas</h1>
+  <h1 align="center">Open Lifeworlds Data Product - Berlin LOR Crime Atlas (source-aligned)</h1>
 
   <p align="center">
-    Data product providing Berlin LOR crime atlas data</a>
+    Source-aligned data product providing Berlin LOR crime atlas</a>
   </p>
 </p>
 
@@ -47,7 +47,7 @@ Examples:
 
 ## Roadmap
 
-See the [open issues](https://github.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/issues) for a list of proposed features (and known issues).
 
 ## License
 
