@@ -8,7 +8,9 @@ This data product uses statistical crime data provided
 by [Polizei Berlin](https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin/) available under the following
 URLs
 
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
 * [Fallzahlen&HZ%202013-2022.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202013-2022.xlsx)
+* [Fallzahlen&HZ%202014-2023.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202014-2023.xlsx)
 
 ## Data Product Design
 
@@ -24,6 +26,7 @@ statements, or used data platform services.**
 
 The data of this data product is available under the following URLs
 
+* [berlin-lor-crime-atlas-2012-00/berlin-lor-crime-atlas-2012-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2012-00/berlin-lor-crime-atlas-2012-00.csv)
 * [berlin-lor-crime-atlas-2013-00/berlin-lor-crime-atlas-2013-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2013-00/berlin-lor-crime-atlas-2013-00.csv)
 * [berlin-lor-crime-atlas-2014-00/berlin-lor-crime-atlas-2014-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2014-00/berlin-lor-crime-atlas-2014-00.csv)
 * [berlin-lor-crime-atlas-2015-00/berlin-lor-crime-atlas-2015-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2015-00/berlin-lor-crime-atlas-2015-00.csv)
@@ -34,6 +37,7 @@ The data of this data product is available under the following URLs
 * [berlin-lor-crime-atlas-2020-00/berlin-lor-crime-atlas-2020-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2020-00/berlin-lor-crime-atlas-2020-00.csv)
 * [berlin-lor-crime-atlas-2021-00/berlin-lor-crime-atlas-2021-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2021-00/berlin-lor-crime-atlas-2021-00.csv)
 * [berlin-lor-crime-atlas-2022-00/berlin-lor-crime-atlas-2022-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2022-00/berlin-lor-crime-atlas-2022-00.csv)
+* [berlin-lor-crime-atlas-2023-00/berlin-lor-crime-atlas-2023-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2023-00/berlin-lor-crime-atlas-2023-00.csv)
 
 ## Metadata
 

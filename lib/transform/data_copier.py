@@ -29,7 +29,11 @@ def copy_data(source_path, results_path, clean=False, quiet=False):
 
 
 def get_results_file_name(subdir, source_file_name):
+    if source_file_name == "Fallzahlen&HZ%202012-2021.xlsx":
+        return "berlin-lor-crime-atlas-2021.xlsx"
     if source_file_name == "Fallzahlen&HZ%202013-2022.xlsx":
-        return "berlin-lor-crime-atlas.xlsx"
+        return "berlin-lor-crime-atlas-2022.xlsx"
+    elif source_file_name == "Fallzahlen&HZ%202014-2023.xlsx":
+        return "berlin-lor-crime-atlas-2023.xlsx"
     else:
         return source_file_name
