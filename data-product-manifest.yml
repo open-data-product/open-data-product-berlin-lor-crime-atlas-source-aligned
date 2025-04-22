@@ -1,33 +1,50 @@
 ---
 id: berlin-lor-crime-atlas-source-aligned
-name: Berlin LOR Crime Atlas (source-aligned)
 metadata:
-  ownership: Open Data Product
-  domain: statistics
+  name: Berlin LOR Crime Atlas (source-aligned)
+  owner: Open Data Product
+  description: Source-aligned data product providing Berlin LOR crime data
   schema:
-    - offences: total number of offences
-    - robbery: total number of cases of robberies
-    - street_robbery_purse_snatching: number of street robberies and purse snatching
-    - bodily_harm: total number of cases of bodily harm
-    - dangerous_and_grievous_bodily_harm: number of cases of dangerous and grievous bodily harm
-    - deprivation_of_liberty_coercion_threat_stalking: number of cases of deprivation of liberty, coercion, threat, stalking
-    - theft: total number of theft cases
-    - motor_vehicle_theft: number of vehicle theft cases
-    - theft_from_motor_vehicle: number of cases of theft from motor vehicle
-    - bicycle_theft: number of bicycle theft cases
-    - residential_burglary: number of cases of residential burglary
-    - fire_offences: total number of fire offences
-    - arson: number of cases of arson
-    - damage_to_property: total number of cases of damage to property
-    - damage_to_property_by_graffiti: number of cases of damage to property by graffiti
-    - narcotics_offences: number of narcotics offences
-    - kieztaten: number of offences with a strong connection to the offender's place of residence
-description: This data products provides Berlin crime data on different LOR hierarchy levels
+    - name: offences
+      description: total number of offences
+    - name: robbery
+      description: total number of cases of robberies
+    - name: street_robbery_purse_snatching
+      description: number of street robberies and purse snatching
+    - name: bodily_harm
+      description: total number of cases of bodily harm
+    - name: dangerous_and_grievous_bodily_harm
+      description: number of cases of dangerous and grievous bodily harm
+    - name: deprivation_of_liberty_coercion_threat_stalking
+      description: number of cases of deprivation of liberty, coercion, threat, stalking
+    - name: theft
+      description: total number of theft cases
+    - name: motor_vehicle_theft
+      description: number of vehicle theft cases
+    - name: theft_from_motor_vehicle
+      description: number of cases of theft from motor vehicle
+    - name: bicycle_theft
+      description: number of bicycle theft cases
+    - name: residential_burglary
+      description: number of cases of residential burglary
+    - name: fire_offences
+      description: total number of fire offences
+    - name: arson
+      description: number of cases of arson
+    - name: damage_to_property
+      description: total number of cases of damage to property
+    - name: damage_to_property_by_graffiti
+      description: number of cases of damage to property by graffiti
+    - name: narcotics_offences
+      description: number of narcotics offences
+    - name: kieztaten
+      description: number of offences with a strong connection to the offender's place of residence
 input_ports:
   - id: berlin-lor-crime-atlas
     metadata:
       name: Kriminalitätsatlas Berlin
-      author: Polizei Berlin
+      owner: Polizei Berlin
+      description:
       url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
       license: CC-BY-3.0-Namensnennung
       updated: 2024-03-27
@@ -39,7 +56,8 @@ output_ports:
   - id: berlin-lor-crime-atlas-csv
     metadata:
       name: Berlin LOR crime atlas csv
-      author: Open Data Product
+      owner: Open Data Product
+      description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data
       license: CC-BY-4.0
       updated: 2024-07-21
@@ -56,10 +74,15 @@ output_ports:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2021-00/berlin-lor-crime-atlas-2021-00.csv
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2022-00/berlin-lor-crime-atlas-2022-00.csv
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2023-00/berlin-lor-crime-atlas-2023-00.csv
-metrics:
-  - quality:
-  - operational:
+observability:
+  quality:
+  operational:
+  slas:
+  security:
+consumers:
+use_cases:
 classification: source-aligned
+ubiquitous_language:
 tags:
   - berlin
   - lor
