@@ -1,129 +1,473 @@
-# Data Product Canvas - Berlin LOR Housing Stock
 
-## Input Ports
-
-**Input ports define the format and protocol in which data can be read (database, file, API, visualizations)**
-
-This data product uses statistical crime data provided
-by [Polizei Berlin](https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin/) available under the following
-URLs
-
-* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
-* [Fallzahlen&HZ%202013-2022.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202013-2022.xlsx)
-* [Fallzahlen&HZ%202014-2023.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202014-2023.xlsx)
-
-## Data Product Design
-
-**Describe everything you need to design a data product on a conceptual level.**
-**Ingestion, storage, transport, wrangling, cleaning, transformations, enrichment, augmentation, analytics, SQL
-statements, or used data platform services.**
-
-* [converts Excel data into csv](../lib/transform/data_csv_converter.py)
-
-## Output Ports
-
-**Output ports define the format and protocol in which data can be exposed (db, file, API, visualizations)**
-
-The data of this data product is available under the following URLs
-
-* [berlin-lor-crime-atlas-2012-00/berlin-lor-crime-atlas-2012-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2012-00/berlin-lor-crime-atlas-2012-00.csv)
-* [berlin-lor-crime-atlas-2013-00/berlin-lor-crime-atlas-2013-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2013-00/berlin-lor-crime-atlas-2013-00.csv)
-* [berlin-lor-crime-atlas-2014-00/berlin-lor-crime-atlas-2014-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2014-00/berlin-lor-crime-atlas-2014-00.csv)
-* [berlin-lor-crime-atlas-2015-00/berlin-lor-crime-atlas-2015-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2015-00/berlin-lor-crime-atlas-2015-00.csv)
-* [berlin-lor-crime-atlas-2016-00/berlin-lor-crime-atlas-2016-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2016-00/berlin-lor-crime-atlas-2016-00.csv)
-* [berlin-lor-crime-atlas-2017-00/berlin-lor-crime-atlas-2017-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2017-00/berlin-lor-crime-atlas-2017-00.csv)
-* [berlin-lor-crime-atlas-2018-00/berlin-lor-crime-atlas-2018-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2018-00/berlin-lor-crime-atlas-2018-00.csv)
-* [berlin-lor-crime-atlas-2019-00/berlin-lor-crime-atlas-2019-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2019-00/berlin-lor-crime-atlas-2019-00.csv)
-* [berlin-lor-crime-atlas-2020-00/berlin-lor-crime-atlas-2020-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2020-00/berlin-lor-crime-atlas-2020-00.csv)
-* [berlin-lor-crime-atlas-2021-00/berlin-lor-crime-atlas-2021-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2021-00/berlin-lor-crime-atlas-2021-00.csv)
-* [berlin-lor-crime-atlas-2022-00/berlin-lor-crime-atlas-2022-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2022-00/berlin-lor-crime-atlas-2022-00.csv)
-* [berlin-lor-crime-atlas-2023-00/berlin-lor-crime-atlas-2023-00.csv](https://raw.githubusercontent.com/open-lifeworlds/open-lifeworlds-data-product-berlin-lor-crime-atlas-source-aligned/main/data/berlin-lor-crime-atlas-2023-00/berlin-lor-crime-atlas-2023-00.csv)
+# Data Product Canvas - Berlin LOR Crime Atlas (source-aligned)
 
 ## Metadata
 
-### Ownership
+* owner: Open Data Product
+* description: Source-aligned data product providing Berlin LOR crime data
+* updated: 2025-06-09
 
-**Domain, data product owner, organizational unit, license, version and expiration date**
+## Input Ports
 
-* ownership: Open Lifeworlds
-* domain: statistics
-* license: CC-BY-4.0
+### Kriminalitätsatlas Berlin
 
-### Schema
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
 
-**Attributes, data types, constraints, and relationships to other elements**
+**Files**
 
-* `offences`: total number of offences
-* `robbery`: total number of cases of robberies
-* `street_robbery_purse_snatching`: number of street robberies and purse snatching
-* `bodily_harm`: total number of cases of bodily harm
-* `dangerous_and_grievous_bodily_harm`: number of cases of dangerous and grievous bodily harm
-* `deprivation_of_liberty_coercion_threat_stalking`: number of cases of deprivation of liberty, coercion, threat,
-  stalking
-* `theft`: total number of theft cases
-* `motor_vehicle_theft`: number of vehicle theft cases
-* `theft_from_motor_vehicle`: number of cases of theft from motor vehicle
-* `bicycle_theft`: number of bicycle theft cases
-* `residential_burglary`: number of cases of residential burglary
-* `fire_offences`: total number of fire offences
-* `arson`: number of cases of arson
-* `damage_to_property`: total number of cases of damage to property
-* `damage_to_property_by_graffiti`: number of cases of damage to property by graffiti
-* `narcotics_offences`: number of narcotics offences
-* `kieztaten`: number of offences with a strong connection to the offender's place of residence
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
 
-### Semantics
+### Kriminalitätsatlas Berlin
 
-**Description, logical model**
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
 
-### Security
+**Files**
 
-**Security rules applied to the data product usage e.g. public org, internal, personally identifiable information (PII)
-attributes**
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
 
-## Observability
+### Kriminalitätsatlas Berlin
 
-### Quality metrics
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
 
-**Requirements and metrics such as accuracy, completeness, integrity, or compliance to Data Governance policies**
+**Files**
 
-### Operational metrics
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
 
-**Interval of change, freshness, usage statistics, availability, number of users, data versioning, etc.**
+### Kriminalitätsatlas Berlin
 
-### SLOs
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
 
-**Thresholds for service level objectives to up alerting**
+**Files**
 
-## Consumer
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
 
-**Who is the consumer of the Data Product?**
+### Kriminalitätsatlas Berlin
 
-## Use Case
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
 
-**We believe that ...**
-**We help achieving ...**
-**We know, we are getting there based on ..., ..., ...**
+**Files**
 
-We believe that this data product can be used to derive any kind of data based product.
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
+
+### Kriminalitätsatlas Berlin
+
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
+
+**Files**
+
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
+
+### Kriminalitätsatlas Berlin
+
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
+
+**Files**
+
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
+
+### Kriminalitätsatlas Berlin
+
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
+
+**Files**
+
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
+
+### Kriminalitätsatlas Berlin
+
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
+
+**Files**
+
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
+
+### Kriminalitätsatlas Berlin
+
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
+
+**Files**
+
+* [Fallzahlen&HZ%202012-2021.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202012-2021.xlsx)
+
+### Kriminalitätsatlas Berlin
+
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
+
+**Files**
+
+* [Fallzahlen&HZ%202013-2022.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202013-2022.xlsx)
+
+### Kriminalitätsatlas Berlin
+
+* owner: Polizei Berlin
+* url: https://daten.berlin.de/datensaetze/kriminalit%C3%A4tsatlas-berlin
+
+**Files**
+
+* [Fallzahlen&HZ%202014-2023.xlsx](https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202014-2023.xlsx)
+
+## Transformation Steps
+
+* [Data extractor](../lib/extract/data_extractor.py) extracts data from inout ports
+* [Data copier](../lib/transform/data_copier.py) copies and renames extracted data
+* [Data CSV converter](../lib/transform/convert_data_to_csv.py) converts Excel files to CSV format
+* [Data aggregator](../lib/transform/aggregate_data.py) aggregates data to be used as output ports
+
+## Output Ports
+
+### Berlin Lor Crime Atlas 2012 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2012-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2012-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2012-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2013 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2013-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2013-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2013-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2014 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2014-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2014-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2014-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2015 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2015-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2015-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2015-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2016 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2016-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2016-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2016-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2017 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2017-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2017-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2017-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2018 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2018-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2018-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2018-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2019 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2019-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2019-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2019-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2020 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2020-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2020-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2020-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2021 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2021-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2021-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2021-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2022 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2022-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2022-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2022-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2023 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2023-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2023-00-case-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-case-numbers.csv)
+* [berlin-lor-housing-stock-2023-00-frequency-numbers.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-frequency-numbers.csv)
+
+### Berlin Lor Crime Atlas 2012 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2012-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2012-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2012-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2012-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2012-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2012-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2012-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2012-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2012-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2013 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2013-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2013-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2013-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2013-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2013-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2013-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2013-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2013-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2013-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2014 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2014-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2014-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2014-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2014-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2014-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2014-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2014-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2014-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2014-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2015 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2015-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2015-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2015-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2015-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2015-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2015-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2015-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2015-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2015-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2016 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2016-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2016-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2016-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2016-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2016-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2016-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2016-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2016-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2016-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2017 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2017-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2017-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2017-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2017-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2017-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2017-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2017-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2017-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2017-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2018 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2018-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2018-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2018-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2018-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2018-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2018-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2018-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2018-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2018-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2019 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2019-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2019-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2019-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2019-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2019-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2019-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2019-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2019-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2019-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2020 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2020-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2020-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2020-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2020-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2020-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2020-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2020-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2020-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2020-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2021 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2021-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2021-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2021-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2021-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2021-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2021-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2021-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2021-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2021-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2022 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2022-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2022-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2022-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2022-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2022-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2022-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2022-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2022-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2022-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-frequency-numbers-forecast-areas.csv)
+
+### Berlin Lor Crime Atlas 2023 00
+
+* owner: Open Data Product
+* url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2023-00
+* updated: 2025-06-09
+
+**Files**
+
+* [berlin-lor-housing-stock-2023-00-case-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-case-numbers-city.csv)
+* [berlin-lor-housing-stock-2023-00-case-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-case-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2023-00-case-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-case-numbers-districts.csv)
+* [berlin-lor-housing-stock-2023-00-case-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-case-numbers-forecast-areas.csv)
+* [berlin-lor-housing-stock-2023-00-frequency-numbers-city.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-frequency-numbers-city.csv)
+* [berlin-lor-housing-stock-2023-00-frequency-numbers-district-regions.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-frequency-numbers-district-regions.csv)
+* [berlin-lor-housing-stock-2023-00-frequency-numbers-districts.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-frequency-numbers-districts.csv)
+* [berlin-lor-housing-stock-2023-00-frequency-numbers-forecast-areas.csv](https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-frequency-numbers-forecast-areas.csv)
 
 ## Classification
 
 **The nature of the exposed data (source-aligned, aggregate, consumer-aligned)**
 
-This data product is source-aligned since the contained csv files represent the source data.
+source-aligned
 
-## Ubiquitous Language
-
-**Context-specific domain terminology (relevant for Data Product), Data Product polysemes which are used to create the
-current Data Product**
-
-* **LOR**: (German: Lebensweltlich orientierte Räume) life-world oriented spaces
-* **district**: (German: Bezirk)
-* **forecast area**: (German: Prognoseraum)
-* **district region**: (German: Bezirksregion)
-* **planning area**: a spatial unit whose spatial development is planned by the public authorities
 
 ---
-This data product canvas uses the template
-of [datamesh-architecture.com](https://www.datamesh-architecture.com/data-product-canvas).
+This data product canvas uses the template of [datamesh-architecture.com](https://www.datamesh-architecture.com/data-product-canvas).
