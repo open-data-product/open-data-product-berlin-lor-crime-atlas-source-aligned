@@ -6,7 +6,7 @@ metadata:
   description: Source-aligned data product providing Berlin LOR crime data
   url:
   license:
-  updated: 2025-06-09
+  updated: 2025-06-24
   schema:
     - name: offences
       description: total number of offences
@@ -177,16 +177,16 @@ input_ports:
       - https://www.kriminalitaetsatlas.berlin.de/K-Atlas/bezirke/Fallzahlen&HZ%202014-2023.xlsx
 transformation_steps:
   - name: Data extractor
-    path: lib/extract/data_extractor.py
+    path: https://github.com/open-data-product/open-data-product-python-lib/blob/main/opendataproduct/extract/data_extractor.py
     description: extracts data from inout ports
   - name: Data copier
-    path: lib/transform/data_copier.py
+    path: https://github.com/open-data-product/open-data-product-python-lib/blob/main/opendataproduct/transform/data_copier.py
     description: copies and renames extracted data
   - name: Data CSV converter
-    path: lib/transform/convert_data_to_csv.py
+    path: https://github.com/open-data-product/open-data-product-python-lib/blob/main/opendataproduct/transform/data_csv_converter.py
     description: converts Excel files to CSV format
-  - name: Data aggregator
-    path: lib/transform/aggregate_data.py
+  - name: Data CSV aggregator
+    path: https://github.com/open-data-product/open-data-product-python-lib/blob/main/opendataproduct/transform/data_csv_aggregator.py
     description: aggregates data to be used as output ports
 output_ports:
   - id: berlin-lor-crime-atlas-2012-00
@@ -196,7 +196,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2012-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-case-numbers.csv
@@ -208,7 +208,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2013-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-case-numbers.csv
@@ -220,7 +220,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2014-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-case-numbers.csv
@@ -232,7 +232,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2015-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-case-numbers.csv
@@ -244,7 +244,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2016-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-case-numbers.csv
@@ -256,7 +256,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2017-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-case-numbers.csv
@@ -268,7 +268,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2018-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-case-numbers.csv
@@ -280,7 +280,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2019-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-case-numbers.csv
@@ -292,7 +292,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2020-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-case-numbers.csv
@@ -304,7 +304,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2021-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-case-numbers.csv
@@ -316,7 +316,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2022-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-case-numbers.csv
@@ -328,7 +328,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/02-silver/berlin-lor-crime-atlas-2023-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/02-silver/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-case-numbers.csv
@@ -340,7 +340,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2012-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2012-00/berlin-lor-housing-stock-2012-00-case-numbers-city.csv
@@ -358,7 +358,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2013-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2013-00/berlin-lor-housing-stock-2013-00-case-numbers-city.csv
@@ -376,7 +376,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2014-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2014-00/berlin-lor-housing-stock-2014-00-case-numbers-city.csv
@@ -394,7 +394,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2015-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2015-00/berlin-lor-housing-stock-2015-00-case-numbers-city.csv
@@ -412,7 +412,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2016-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2016-00/berlin-lor-housing-stock-2016-00-case-numbers-city.csv
@@ -430,7 +430,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2017-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2017-00/berlin-lor-housing-stock-2017-00-case-numbers-city.csv
@@ -448,7 +448,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2018-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2018-00/berlin-lor-housing-stock-2018-00-case-numbers-city.csv
@@ -466,7 +466,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2019-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2019-00/berlin-lor-housing-stock-2019-00-case-numbers-city.csv
@@ -484,7 +484,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2020-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2020-00/berlin-lor-housing-stock-2020-00-case-numbers-city.csv
@@ -502,7 +502,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2021-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2021-00/berlin-lor-housing-stock-2021-00-case-numbers-city.csv
@@ -520,7 +520,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2022-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2022-00/berlin-lor-housing-stock-2022-00-case-numbers-city.csv
@@ -538,7 +538,7 @@ output_ports:
       description:
       url: https://github.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/tree/main/data/03-gold/berlin-lor-crime-atlas-2023-00
       license:
-      updated: 2025-06-09
+      updated: 2025-06-24
       schema:
     files:
       - https://raw.githubusercontent.com/open-data-product/open-data-product-berlin-lor-crime-atlas-source-aligned/main/data/03-gold/berlin-lor-crime-atlas-2023-00/berlin-lor-housing-stock-2023-00-case-numbers-city.csv
